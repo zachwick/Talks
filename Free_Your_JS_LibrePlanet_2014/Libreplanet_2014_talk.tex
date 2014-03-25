@@ -1,0 +1,307 @@
+\documentclass[11pt]{beamer}
+\usetheme{Malmoe}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{listings}
+\author{Zach Wick \\ zach@zachwick.xxx}
+\title{Free Your Javascript}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{} 
+%\institute{} 
+%\date{} 
+%\subject{} 
+\begin{document}
+
+\lstset{
+	keywordstyle=\color{blue},
+	showspaces=false,
+	showstringspaces=false,
+	basicstyle=\tiny
+}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%\begin{frame}
+%\tableofcontents
+%\end{frame}
+
+\begin{frame}{Agenda}
+\begin{itemize}
+\item About the Speaker\\
+\item What is``Free JS''?\\
+\item Why Should You Free Your JS?\\
+\item How You Can Free Your JS\\
+\item Which license(s) to use\\
+\item Interacting with non-free JS\\
+\end{itemize}
+\end{frame}
+
+\begin{frame}{About the Speaker}
+\includegraphics[keepaspectratio=true,width=\framewidth]{all_the_things.png}
+\end{frame}
+
+\begin{frame}{What is "Free JS"?}
+\begin{itemize}
+\item "trivial"\pause
+\begin{itemize}
+\item no AJAX\pause
+\item no dynamically loaded external JS\pause
+\item no functions or methods\pause
+\item no dynamic JS constructs that must be interpreted to verify their non-triviality (eval, obj['myfunc'](myvar);, etc)\pause
+\end{itemize}
+\item freely licensed
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What is non-free JS?}
+Everything else
+\end{frame}
+
+{ % all template changes are local to this group.
+    \setbeamertemplate{navigation symbols}{}
+    \begin{frame}[plain]
+ 		\includegraphics[keepaspectratio=true,width=\paperwidth]{its_a_trap.png}
+    \end{frame}
+}
+
+\begin{frame}{It's a JS Trap!}
+\begin{itemize}
+\item JS runs on \textbf{your} machine! (GASP!)\pause
+\item JS is usually supplied from the web server\pause
+\begin{itemize}
+\item Can you run your own modified copy of the JS?\pause
+\end{itemize}
+\item Only options are to block entirely, or run entirely
+\end{itemize}
+\end{frame}
+
+\begin{frame}{How You Can Free Your JS}
+\begin{itemize}
+\item Identify\pause
+\item Decide\pause
+\item License\pause
+\item Label\pause
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Identifying JS}
+HTML Script Tags
+\begin{lstlisting}[language=HTML]
+<script src="myfile.js"> </script>
+\end{lstlisting}
+\begin{lstlisting}[language=HTML]
+<script>
+var myString = "Hello World!";
+alert(myString);
+</script>
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Identifying JS}
+Event Handlers
+\begin{lstlisting}[language=HTML]
+<body onload="alert('Hello World!')">
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{What about dynamically embedded JS?}
+"You should only worry about this sort of scripts after you have set proper licensing to all the other forms of JavaScript on your page and it is still not behaving as expected when running the page with LibreJS on. This usually means LibreJS is blocking further scripts that are loaded dynamically, and you need to add free license notices to them as well."
+\end{frame}
+
+\begin{frame}{What to do about that pesky JS?}
+\includegraphics[keepaspectratio=true,width=\framewidth]{heman.jpg}
+\end{frame}
+
+\begin{frame}{Which License(s) to Use?}
+\begin{tabular}{|c|c|c|}
+\hline
+CC0 & GPLv2.0 or later & GPLv3 or later\\
+\hline
+Apache 2.0 & LGPL v2.1 & LGPL v3.0\\
+\hline
+BSD 3 Clause & MPL 2.0 & Expat\\
+\hline
+X11 & XFree86 & FreeBSD\\
+\hline
+ISC & Artistic 2.0 & Public Domain\\
+\hline
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Label all the things!!}
+\begin{itemize}
+\item javadoc style @licstart/@licend\pause
+\item magnet links (cool new way!)\pause
+\item JS web labels\pause
+\item Features in the works (SHH!)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{@licstart/@licend Example}
+HTML embedded JS (script tags and event handlers)
+\begin{lstlisting}[language=HTML]
+    <head>
+        <title>My Page</title>
+        <meta charset="UTF-8" />
+        <script>
+        /*    
+        @licstart  The following is the entire license notice for the 
+        JavaScript code in this page.
+
+        Copyright (C) 2012  Loic J. Duros
+
+        The JavaScript code in this page is free software: you can
+        redistribute it and/or modify it under the terms of the GNU
+        General Public License (GNU GPL) as published by the Free Software
+        Foundation, either version 3 of the License, or (at your option)
+        any later version.  The code is distributed WITHOUT ANY WARRANTY;
+        without even the implied warranty of MERCHANTABILITY or FITNESS
+        FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+        As additional permission under GNU GPL version 3 section 7, you
+        may distribute non-source (e.g., minimized or compacted) forms of
+        that code without the copy of the GNU GPL normally required by
+        section 4, provided you include this license notice and a URL
+        through which recipients can access the Corresponding Source.   
+
+        @licend  The above is the entire license notice
+        for the JavaScript code in this page.
+        */
+        </script>
+    </head>
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Stylized Comments}
+Less cool cousin of magnet links\\
+Be careful with minification tools removing them\\
+\begin{lstlisting}[language=HTML]
+/**
+ *
+ * @source: http://www.lduros.net/some-javascript-source.js
+ *
+ * @licstart  The following is the entire license notice for the 
+ *  JavaScript code in this page.
+ *
+ * Copyright (C) 2012  Loic J. Duros
+ *
+ *
+ * The JavaScript code in this page is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in this page.
+ *
+ */
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Magnet Links!!!}
+LibreJS 5.0 and newer\\
+List of magnet links on GNU LibreJS website\\
+No code/comments after @license-end in that script tag\\
+\begin{lstlisting}[language=HTML]
+<script>
+// @license [magnet-link] [human readable name of the license]
+... [script is here] ...
+// @license-end
+</script>
+\end{lstlisting}
+\begin{lstlisting}[language=HTML]
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+var myString = "Hello World!";
+alert(myString);
+// @license-end
+</script>
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{JS Web Labels}
+Specific formatting required\\
+\begin{lstlisting}[language=HTML]
+<table id="jslicense-labels1">
+<tr>
+<td><a href="/js/jquery-1.7.min.js">jquery-1.7.min.js</a></td>
+
+<td><a href="http://www.jclark.com/xml/copying.txt">Expat</a></td>
+
+<td><a href="/js/jquery-1.7.tar.gz">jquery-1.7.tar.gz</a></td>
+</tr>
+</table>
+\end{lstlisting}
+
+Link from all pages that load a JS script.
+\begin{lstlisting}[language=HTML]
+<a href="/about/javascript" rel="jslicense">JavaScript license information</a>
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{But None of Those Will Work For Me...}
+\begin{itemize}
+\item What about concatenated then minified scripts?\pause
+\begin{itemize}
+\item https://drupal.org/project/librejs (Mark Burdett)\pause
+\item LibreJS detecting mixed licensing in a single file\pause
+\end{itemize}
+\item Complain and then commit
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Interacting with non-free JS}
+\begin{itemize}
+\item No JS whatsoever (dillo)\pause
+\item LibreJS (GNU Icecat, Iceweasel, etc.)\pause
+\item Remember that ``Complain and then commit'' thing?\pause
+\item JS-Devs-Task-Force mailing list\pause
+\item bug-librejs mailing list
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Similar tools}
+\begin{itemize}
+\item TamperMonkey\pause
+\begin{itemize}
+\item Free! (GNU GPLv3)
+\item Bink based browsers only\pause
+\end{itemize}
+\item No Script\pause
+\begin{itemize}
+\item Free! (GNU GPL)
+\item Remember how dillo worked?\pause
+\end{itemize}
+\item Ghostery\pause
+\begin{itemize}
+\item \textbf{NON-FREE} 'nuf said
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Further Reading}
+\begin{itemize}
+\item https://www.gnu.org/software/librejs/
+\item http://www.gnu.org/software/librejs/manual/
+\item http://www.gnu.org/software/librejs/free-your-javascript.html
+\item http://www.gnu.org/philosophy/javascript-trap.html
+\end{itemize}
+\end{frame}
+
+\end{document}

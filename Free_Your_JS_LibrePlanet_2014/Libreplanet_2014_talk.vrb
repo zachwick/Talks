@@ -1,0 +1,18 @@
+\frametitle{JS Web Labels}
+Specific formatting required\\
+\begin{lstlisting}[language=HTML]
+<table id="jslicense-labels1">
+<tr>
+<td><a href="/js/jquery-1.7.min.js">jquery-1.7.min.js</a></td>
+
+<td><a href="http://www.jclark.com/xml/copying.txt">Expat</a></td>
+
+<td><a href="/js/jquery-1.7.tar.gz">jquery-1.7.tar.gz</a></td>
+</tr>
+</table>
+\end{lstlisting}
+
+Link from all pages that load a JS script.
+\begin{lstlisting}[language=HTML]
+<a href="/about/javascript" rel="jslicense">JavaScript license information</a>
+\end{lstlisting}
