@@ -1,0 +1,19 @@
+RevEng 101 (Reverse Engineering 101)
+
+Have you always wondered how your favorite computer program worked,
+but you couldn't look at the source code? Do you just enjoy reading
+assembly code more than higher level languages? Did those questions
+sound like jibberish to you?
+Then come to RevEng 101 at All Hands Active. This class will introduce
+you to the concepts of disassembling binaries, analying ELF files, and
+figuring out how programs work without reading the source code. The
+are no prerequisites for this course, but some programming experience
+of any kind would be helpful. Based on how this initial course goes,
+there is the possibility of a whole track of RevEng classes, so come
+and show your support for end-user fiddling!
+Class attendees should bring either a GNU/Linux system of their own
+(even a Raspberry Pi will suffice or a GNU/Linux VM) or should contact
+the instructor (zach@zachwick.com) about using a borrowed
+machine.
+The class will be on April 14 from 6p - 10p and a $10 donation towards
+the operating expenses of AHA is encouraged.
