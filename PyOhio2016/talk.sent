@@ -1,0 +1,93 @@
+"It will be easy"
+The Trials of Updating a Product from Python 2 to 3
+# What does Bareo do?
+Bareo
+# Code's history
+## AppleII+ Applesoft Basic
+@apple_ii_plus.png
+## web.py on an RPi
+@Raspberry_Pi_3_Model_B.png
+web.py on a "real server"
+# Why did we want to do this?
+## Wanted to keep the client lib DRY
+@dilbert_idiot.png
+client lib/SDK
+## py3 not a strict requirement, but helpful
+websockets
+## python2 EOL is then right?
+2020
+# What was the plan?
+Plan-P?
+## I'm not going to do this again
+research, research, research
+### micro-framework, structure didn't match what we already had
+flask
+### event driven, not HTTP verb driven
+### self-defined HTTP verbs :)
+twisted
+### We only needed to be able to parse and return JSON
+tornado | django
+### web.py used wsgiserver from an earlier version of cherrypy
+### restful dispatching seemed easily doable
+### proven successes (Netflix, Hulu, SABnzbd, SickBeard)
+### people are actually using it, not just crying themselves to sleep at
+###  night because of it
+### seemed to fit my developer asthetic (suckless.org mantra)
+### CherryPy is ~10 years old
+cherrypy
+### solve boring problems with clever tech, solve hard problems
+###  with boring tech
+### Bareo is a hard problem
+#### Flour example (bought by weight, used by volume)
+#### Honey prices cheapest in Feb
+http://mcfunley.com/choose-boring-technology
+## Other considerations
+~100 active customers
+#changing Framework & Python version
+huge changes
+# need a stable API
+## can't just willy nilly release new apps
+## API backend changing shouldn't change 'frontend'
+https://runscope.com
+Comprehensive set of returned JSON
+# After all this reasearch, I had a pretty good feel for what needed to happen
+maybe a weekend?
+@haha_no.png
+# MySQL
+web.db -> ??
+## Maybe I'm doing a bad thing, but we rely on debian stable packages
+##   not virtualenvs for dependencies
+MySQLdb
+## MySQLdb not available for my dev machine's architecture
+mysql.connector
+## "official" MySQL Python integration
+## Connector/Python C Extension API Ref -> useful for our C bits
+MySQLCursor vs. MySQLCursorBuffered
+## buffered version useful when you have many small consecutive queries
+MySQLCursorDict vs. MySQLCursorBufferedDict
+## non -dict version give you a list where the index is the column index in mysql
+# Deployment
+nginx -- wsgi --> web.py
+cherrypy can run under wsgi
+reverse proxy with nginx
+# run multiple instances of the API
+# use nginx's built in load balancing
+tools.proxy.on & tools.proxy.base
+# these options are optional and expose true client's address to CherryPy
+## Otherwise, only nginx's address is known to CherryPy
+# Project File Structure
+@dilbert_legacy.png
+1 file per resource
+# Postmortem
+0 regressions
+# This is probably most important
+# able to be this way because of runscope
+30% decrease in avg API response time
+# Even with 3X the users
+# Came from the hourly runscope tests
+Questions?
+ftknox | @zachwick
+# Image Credits
+# Raspberry Pi Image
+#  By Herbfargus - Own work, CC BY-SA 4.0,
+#  https://commons.wikimedia.org/w/index.php?curid=47497384
