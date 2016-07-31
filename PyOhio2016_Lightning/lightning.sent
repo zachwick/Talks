@@ -1,0 +1,19 @@
+sent
+# Presentation tool
+# Minimal dependencies - Xlib, libpng, farbfeld
+(require 'generic-x)
+# gives Emacs syntax highlighting for _tons_ of files
+## batch
+## ini
+## registry
+## apache
+## samba
+## etc.
+define-generic-mode
+# method to use to define your own major modes
+tools.suckless.org/sent
+# sent website
+https://www.emacswiki.org/emacs/GenericMode
+# Lots of examples + docs on Generic Mode
+https://github.com/zachwick/sent-mode
+# sent-mode repo/example
