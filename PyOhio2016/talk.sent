@@ -66,6 +66,14 @@ MySQLCursor vs. MySQLCursorBuffered
 ## buffered version useful when you have many small consecutive queries
 MySQLCursorDict vs. MySQLCursorBufferedDict
 ## non -dict version give you a list where the index is the column index in mysql
+cursor.execute()
+# requires at least one argument - a sql statement to execute
+## the optional second param are data to substitute in
+'''select * from users where name like="%s"'''(postdata['name'],)
+cursor.execute("select * from users where name like='%s'",(postdata['name'],))
+## converts to mysql-able data
+## escapes
+## quotes it
 # Deployment
 nginx -- wsgi --> web.py
 cherrypy can run under wsgi
